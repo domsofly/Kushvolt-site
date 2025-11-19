@@ -2,1838 +2,1006 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>KushVolt – Reliable Solar Power, Delivered Where It Matters</title>
+    <title>KushVolt – Power That Lasts, Trust That Grows</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
       content="KushVolt is a Dubai-registered solar energy exporter serving Africa and the Middle East with high-quality panels, batteries, inverters, and complete solar solutions."
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <style>
       :root {
-        --bg-main: #050816;
-        --bg-alt: #070b18;
-        --bg-card: #0b1220;
+        /* Deep Space Navy */
+        --bg-main: #02040a;
+        --bg-mesh: radial-gradient(
+          at 0% 0%,
+          rgba(17, 24, 39, 1) 0px,
+          transparent 50%
+        ),
+        radial-gradient(at 100% 0%, rgba(250, 204, 21, 0.08) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(34, 197, 94, 0.08) 0px, transparent 50%);
+        
+        /* Solar Accents */
         --accent-gold: #fbbf24;
-        --accent-green: #22c55e;
-        --accent-soft: #fde68a;
-        --text-main: #f9fafb;
-        --text-muted: #9ca3af;
-        --text-soft: #e5e7eb;
-        --border-subtle: rgba(148, 163, 184, 0.35);
-        --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.9);
-        --radius-lg: 18px;
-        --radius-xl: 24px;
-        --transition-fast: 0.18s ease-out;
-        --container-width: 1120px;
-        --nav-height: 76px;
+        --accent-gold-glow: rgba(251, 191, 36, 0.4);
+        --accent-green: #10b981;
+        --accent-green-glow: rgba(16, 185, 129, 0.4);
+        
+        /* Text */
+        --text-main: #ffffff;
+        --text-muted: #94a3b8;
+        --text-soft: #cbd5e1;
+        
+        /* Glassmorphism Variables */
+        --glass-bg: rgba(15, 23, 42, 0.6);
+        --glass-border: rgba(255, 255, 255, 0.08);
+        --glass-highlight: rgba(255, 255, 255, 0.12);
+        --blur-strength: 16px;
+        
+        --radius-lg: 20px;
+        --radius-xl: 32px;
+        --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        --container-width: 1180px;
+        --nav-height: 80px;
       }
+
       * {
         box-sizing: border-box;
         margin: 0;
         padding: 0;
       }
-      html,
-      body {
+
+      html {
         scroll-behavior: smooth;
-        background: radial-gradient(
-          circle at top,
-          #111827 0,
-          #020617 42%,
-          #020617 100%
-        );
-        color: var(--text-main);
-        font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
-          "Segoe UI", sans-serif;
       }
+
       body {
+        background-color: var(--bg-main);
+        background-image: var(--bg-mesh);
+        background-attachment: fixed; /* Parallax-like fixed bg */
+        color: var(--text-main);
+        font-family: "Inter", system-ui, sans-serif;
         line-height: 1.6;
-        font-size: 1rem;
+        font-size: 16px;
+        overflow-x: hidden;
       }
+
+      /* Arabic text optimization */
+      [class*="-ar"] {
+        font-family: "Cairo", "Inter", sans-serif;
+      }
+
       a {
         color: inherit;
         text-decoration: none;
+        transition: color 0.2s;
       }
+
       img {
         max-width: 100%;
         display: block;
       }
-      /* Layout */
+
+      /* --- Layout Utilities --- */
       .page-shell {
         min-height: 100vh;
         display: flex;
         flex-direction: column;
       }
+
       .container {
         width: 100%;
         max-width: var(--container-width);
         margin: 0 auto;
-        padding: 0 1.25rem;
+        padding: 0 1.5rem;
       }
+
       section {
-        padding: 4.5rem 0;
+        padding: 6rem 0;
         position: relative;
       }
-      section:nth-of-type(odd) {
-        background: linear-gradient(
-          135deg,
-          rgba(15, 23, 42, 0.94),
-          rgba(2, 6, 23, 0.98)
-        );
-      }
-      section:nth-of-type(even) {
-        background: linear-gradient(
-          135deg,
-          rgba(2, 6, 23, 0.98),
-          rgba(15, 23, 42, 0.94)
-        );
-      }
+
+      /* --- Typography --- */
       .section-header {
-        max-width: 640px;
-        margin-bottom: 3rem;
+        max-width: 680px;
+        margin-bottom: 3.5rem;
       }
+
       .section-kicker {
-        font-size: 0.8rem;
-        letter-spacing: 0.16em;
+        font-size: 0.85rem;
+        letter-spacing: 0.15em;
         text-transform: uppercase;
-        color: var(--accent-soft);
-        margin-bottom: 0.75rem;
-      }
-      .section-title {
-        font-size: 1.7rem;
+        background: linear-gradient(to right, var(--accent-gold), var(--accent-green));
+        -webkit-background-clip: text;
+        color: transparent;
+        margin-bottom: 1rem;
         font-weight: 600;
-        margin-bottom: 0.35rem;
+        display: inline-block;
       }
+
+      .section-title {
+        font-size: clamp(2rem, 4vw, 2.5rem);
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+      }
+
       .section-title-ar {
-        font-size: 1rem;
+        font-size: 1.1rem;
         font-weight: 400;
-        color: var(--accent-soft);
+        color: var(--text-soft);
         direction: rtl;
+        opacity: 0.9;
       }
+
       .section-subtitle {
-        font-size: 1.05rem;
+        font-size: 1.1rem;
         color: var(--text-muted);
-        margin-top: 1rem;
+        margin-top: 1.2rem;
+        line-height: 1.7;
       }
-      /* Header / Nav */
+
+      /* --- Glass Components --- */
+      .glass-panel {
+        background: var(--glass-bg);
+        backdrop-filter: blur(var(--blur-strength));
+        -webkit-backdrop-filter: blur(var(--blur-strength));
+        border: 1px solid var(--glass-border);
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+      }
+
+      /* --- Navigation --- */
       header {
         position: sticky;
         top: 0;
-        z-index: 40;
-        backdrop-filter: blur(10px);
-        background: linear-gradient(
-          to bottom,
-          rgba(15, 23, 42, 0.96),
-          rgba(15, 23, 42, 0.75),
-          transparent
-        );
-        border-bottom: 1px solid rgba(148, 163, 184, 0.3);
+        z-index: 50;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        background: rgba(2, 4, 10, 0.85);
+        backdrop-filter: blur(20px);
+        transition: all 0.3s ease;
       }
+
       .nav {
         height: var(--nav-height);
         display: flex;
         align-items: center;
         justify-content: space-between;
       }
+
       .brand {
         display: flex;
         align-items: center;
-        gap: 0.75rem;
+        gap: 0.85rem;
+        text-decoration: none;
       }
+
       .brand-logo {
-        width: 38px;
-        height: 38px;
-        border-radius: 999px;
-        border: 2px solid rgba(248, 250, 252, 0.8);
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 0.9rem;
-        font-weight: 700;
-        color: var(--accent-gold);
-        background: radial-gradient(
-          circle at 30% 0,
-          #facc15 0,
-          #eab308 30%,
-          #0f172a 80%
-        );
-        box-shadow: 0 0 22px rgba(250, 204, 21, 0.6);
-      }
-      .brand-text {
-        display: flex;
-        flex-direction: column;
-        gap: 0.1rem;
-      }
-      .brand-name {
-        font-weight: 600;
         font-size: 1rem;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
+        font-weight: 800;
+        color: #000;
+        background: linear-gradient(135deg, var(--accent-gold) 0%, #f59e0b 100%);
+        box-shadow: 0 0 15px var(--accent-gold-glow);
       }
+
+      .brand-name {
+        font-weight: 700;
+        font-size: 1.1rem;
+        letter-spacing: 0.02em;
+        color: #fff;
+      }
+
       .brand-tagline {
-        font-size: 0.78rem;
+        font-size: 0.75rem;
         color: var(--text-muted);
+        display: block;
       }
+
       .nav-links {
         display: flex;
-        align-items: center;
-        gap: 1.75rem;
-        font-size: 0.9rem;
+        gap: 2rem;
+        font-size: 0.95rem;
       }
+
       .nav-links a {
         color: var(--text-soft);
+        font-weight: 500;
         position: relative;
-        padding-bottom: 0.1rem;
+        padding: 0.5rem 0;
       }
-      .nav-links a::after {
-        content: "";
+
+      .nav-links a::before {
+        content: '';
         position: absolute;
-        left: 0;
         bottom: 0;
+        left: 0;
         width: 0;
         height: 2px;
-        background: linear-gradient(
-          to right,
-          var(--accent-gold),
-          var(--accent-green)
-        );
-        transition: width var(--transition-fast);
+        background: var(--accent-gold);
+        transition: width 0.3s ease;
       }
-      .nav-links a:hover::after {
+
+      .nav-links a:hover::before {
         width: 100%;
       }
+      
+      .nav-links a:hover {
+        color: #fff;
+      }
+
       .nav-cta {
         display: flex;
         align-items: center;
-        gap: 0.6rem;
+        gap: 1rem;
       }
-      .nav-cta span {
-        font-size: 0.8rem;
+
+      .region-badge {
+        font-size: 0.75rem;
         color: var(--text-muted);
+        background: rgba(255,255,255,0.05);
+        padding: 0.3rem 0.8rem;
+        border-radius: 20px;
+        border: 1px solid rgba(255,255,255,0.05);
       }
-      .btn-outline {
-        border-radius: 999px;
-        padding: 0.4rem 0.9rem;
-        border: 1px solid rgba(249, 250, 251, 0.5);
-        font-size: 0.8rem;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.45rem;
-        cursor: pointer;
-        background: rgba(15, 23, 42, 0.75);
-        backdrop-filter: blur(8px);
-        transition: background var(--transition-fast),
-          border-color var(--transition-fast), transform var(--transition-fast);
-      }
-      .btn-outline:hover {
-        background: rgba(15, 23, 42, 0.95);
-        border-color: var(--accent-gold);
-        transform: translateY(-1px);
-      }
-      /* Mobile nav */
+
+      /* Mobile Nav Toggle */
       .nav-toggle {
         display: none;
+        background: none;
         border: none;
-        background: transparent;
-        color: var(--text-soft);
-        font-size: 1.35rem;
+        color: #fff;
+        font-size: 1.5rem;
         cursor: pointer;
       }
-      @media (max-width: 768px) {
-        .nav-links,
-        .nav-cta {
-          display: none;
-        }
-        .nav-toggle {
-          display: block;
-        }
-        .nav-open .nav-links,
-        .nav-open .nav-cta {
-          display: flex;
-        }
-        .nav-open .nav {
-          align-items: flex-start;
-          flex-direction: column;
-          gap: 0.75rem;
-          padding-top: 0.9rem;
-          padding-bottom: 1.1rem;
-        }
-        .nav-open .nav-links {
-          flex-wrap: wrap;
-        }
-      }
-      /* Buttons */
+
+      /* --- Buttons --- */
       .btn {
-        border: none;
-        cursor: pointer;
-        padding: 0.8rem 1.3rem;
-        border-radius: 999px;
-        font-size: 0.95rem;
-        font-weight: 500;
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        gap: 0.45rem;
-        transition: transform var(--transition-fast),
-          box-shadow var(--transition-fast), background var(--transition-fast),
-          border-color var(--transition-fast), color var(--transition-fast);
-        white-space: nowrap;
-      }
-      .btn-primary {
-        background: radial-gradient(
-          circle at 20% 0,
-          #facc15 0,
-          #f97316 45%,
-          #ea580c 100%
-        );
-        color: #111827;
-        box-shadow: 0 14px 40px rgba(249, 115, 22, 0.55);
-        border: 1px solid rgba(253, 224, 71, 0.6);
-      }
-      .btn-primary:hover {
-        transform: translateY(-1px);
-        box-shadow: 0 20px 60px rgba(249, 115, 22, 0.65);
-      }
-      .btn-ghost {
-        background: rgba(15, 23, 42, 0.9);
-        color: var(--text-soft);
-        border: 1px solid var(--border-subtle);
-      }
-      .btn-ghost:hover {
-        border-color: var(--accent-gold);
-        background: rgba(15, 23, 42, 1);
-        transform: translateY(-1px);
-      }
-      .btn-secondary {
-        background: rgba(22, 163, 74, 0.1);
-        border: 1px solid rgba(34, 197, 94, 0.5);
-        color: #bbf7d0;
-      }
-      .btn-secondary:hover {
-        background: rgba(22, 163, 74, 0.25);
-      }
-      .btn-icon {
-        font-size: 1.15rem;
-      }
-      /* Hero */
-      #hero {
-        padding-top: 5.5rem;
-        padding-bottom: 5rem;
+        padding: 0.9rem 1.8rem;
+        border-radius: 99px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        cursor: pointer;
+        transition: var(--transition-smooth);
+        gap: 0.5rem;
+        text-decoration: none;
         position: relative;
         overflow: hidden;
       }
-      #hero::before {
-        content: "";
-        position: absolute;
-        inset: -40%;
-        background: radial-gradient(
-            circle at top left,
-            rgba(250, 204, 21, 0.14),
-            transparent 55%
-          ),
-          radial-gradient(
-            circle at top right,
-            rgba(45, 212, 191, 0.12),
-            transparent 55%
-          );
-        opacity: 0.85;
-        pointer-events: none;
+
+      /* Primary Solar Button */
+      .btn-primary {
+        background: linear-gradient(135deg, var(--accent-gold) 0%, #f59e0b 100%);
+        color: #0f172a;
+        border: none;
+        box-shadow: 0 4px 20px var(--accent-gold-glow);
       }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 30px var(--accent-gold-glow);
+      }
+
+      .btn-primary::after {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: linear-gradient(rgba(255,255,255,0.2), transparent);
+        opacity: 0;
+        transition: 0.3s;
+      }
+      
+      .btn-primary:hover::after {
+        opacity: 1;
+      }
+
+      .btn-ghost {
+        background: rgba(255, 255, 255, 0.05);
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+      }
+
+      .btn-ghost:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: var(--accent-gold);
+      }
+
+      .btn-outline {
+        border: 1px solid rgba(255,255,255,0.2);
+        background: transparent;
+        color: #fff;
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+        border-radius: 99px;
+      }
+      
+      .btn-outline:hover {
+        border-color: var(--accent-green);
+        background: rgba(16, 185, 129, 0.1);
+      }
+
+      /* --- Hero Section --- */
+      #hero {
+        padding-top: 6rem;
+        padding-bottom: 6rem;
+        overflow: hidden;
+      }
+
+      /* Solar Glow Background Effect */
+      #hero::before {
+        content: '';
+        position: absolute;
+        top: -20%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60vw;
+        height: 60vw;
+        background: radial-gradient(circle, rgba(251, 191, 36, 0.08) 0%, transparent 70%);
+        pointer-events: none;
+        z-index: -1;
+      }
+
       .hero-inner {
-        position: relative;
         display: grid;
-        grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
-        gap: 3rem;
+        grid-template-columns: 1.3fr 1fr;
+        gap: 4rem;
         align-items: center;
       }
-      @media (max-width: 900px) {
-        .hero-inner {
-          grid-template-columns: minmax(0, 1fr);
-          gap: 2.8rem;
-        }
-      }
+
       .hero-eyebrow {
         display: inline-flex;
         align-items: center;
-        gap: 0.45rem;
-        border-radius: 999px;
-        border: 1px solid rgba(148, 163, 184, 0.45);
-        background: radial-gradient(
-          circle at top left,
-          rgba(250, 204, 21, 0.12),
-          transparent 60%
-        );
-        padding: 0.2rem 0.7rem 0.2rem 0.2rem;
-        font-size: 0.78rem;
-        margin-bottom: 1.1rem;
+        gap: 0.8rem;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 0.3rem 0.4rem 0.3rem 1rem;
+        border-radius: 99px;
+        margin-bottom: 1.5rem;
+        backdrop-filter: blur(10px);
       }
-      .hero-eyebrow-pill {
-        border-radius: 999px;
-        padding: 0.2rem 0.7rem;
-        background: rgba(15, 23, 42, 0.9);
-        border: 1px solid rgba(250, 204, 21, 0.5);
-        font-weight: 500;
-        font-size: 0.75rem;
-        text-transform: uppercase;
-        letter-spacing: 0.12em;
-      }
-      .hero-eyebrow-text {
+
+      .hero-eyebrow span:first-child {
+        font-size: 0.85rem;
         color: var(--text-soft);
       }
-      .hero-heading {
-        font-size: clamp(2.1rem, 4vw, 2.8rem);
-        line-height: 1.15;
-        margin-bottom: 0.5rem;
-        font-weight: 600;
+
+      .hero-status-dot {
+        width: 8px;
+        height: 8px;
+        background: var(--accent-green);
+        border-radius: 50%;
+        box-shadow: 0 0 10px var(--accent-green);
+        animation: pulse 2s infinite;
       }
+
+      @keyframes pulse {
+        0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+        70% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+      }
+
+      .hero-heading {
+        font-size: clamp(2.5rem, 5vw, 3.8rem);
+        font-weight: 700;
+        line-height: 1.1;
+        margin-bottom: 1rem;
+        letter-spacing: -0.03em;
+      }
+
       .hero-heading span {
-        background: linear-gradient(to right, #facc15, #f97316, #22c55e);
+        background: linear-gradient(to right, var(--accent-gold), #f59e0b, #d97706);
         -webkit-background-clip: text;
         color: transparent;
       }
+
       .hero-heading-ar {
-        font-size: 1.1rem;
-        color: var(--accent-soft);
-        margin-bottom: 1rem;
+        font-size: 1.25rem;
+        color: var(--text-muted);
+        margin-bottom: 1.5rem;
         direction: rtl;
       }
+
       .hero-subtitle {
-        font-size: 1.05rem;
-        color: var(--text-muted);
-        max-width: 32rem;
-        margin-bottom: 1.75rem;
-      }
-      .hero-badges {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.55rem;
-        margin-bottom: 1.5rem;
-      }
-      .hero-badge {
-        border-radius: 999px;
-        border: 1px solid rgba(148, 163, 184, 0.5);
-        padding: 0.3rem 0.75rem;
-        font-size: 0.78rem;
+        font-size: 1.15rem;
         color: var(--text-soft);
-        background: rgba(15, 23, 42, 0.8);
+        max-width: 540px;
+        margin-bottom: 2rem;
+        line-height: 1.6;
       }
+
       .hero-cta-row {
         display: flex;
         flex-wrap: wrap;
-        gap: 0.75rem;
-        align-items: center;
-        margin-bottom: 1.3rem;
+        gap: 1rem;
+        margin-bottom: 2rem;
       }
-      .hero-cta-note {
-        font-size: 0.8rem;
-        color: var(--text-muted);
-      }
-      .hero-meta {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1.5rem;
-        margin-top: 1.2rem;
-        font-size: 0.8rem;
-        color: var(--text-muted);
-      }
-      .hero-meta-item span {
-        display: block;
-      }
-      .hero-meta-label {
-        text-transform: uppercase;
-        letter-spacing: 0.12em;
-        font-size: 0.74rem;
-        color: var(--accent-soft);
-        margin-bottom: 0.25rem;
-      }
+
+      /* Hero Card (The Glass Box) */
       .hero-right-card {
-        background: radial-gradient(
-            circle at top left,
-            rgba(234, 179, 8, 0.14),
-            transparent 55%
-          ),
-          linear-gradient(145deg, #020617, #020617, #020617);
-        border-radius: 26px;
-        border: 1px solid rgba(148, 163, 184, 0.45);
-        padding: 1.5rem 1.6rem;
-        box-shadow: var(--shadow-soft);
         position: relative;
+        padding: 2rem;
+        border-radius: var(--radius-xl);
+        background: rgba(20, 25, 35, 0.6);
+        backdrop-filter: blur(24px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
         overflow: hidden;
       }
-      .hero-right-card::after {
-        content: "";
+
+      /* Shine effect on card */
+      .hero-right-card::before {
+        content: '';
         position: absolute;
-        inset: 0;
-        background: radial-gradient(
-          circle at 80% 10%,
-          rgba(56, 189, 248, 0.12),
-          transparent 55%
-        );
-        pointer-events: none;
+        top: 0; left: -100%;
+        width: 50%; height: 100%;
+        background: linear-gradient(to right, transparent, rgba(255,255,255,0.05), transparent);
+        transform: skewX(-20deg);
+        animation: shine 6s infinite;
       }
-      .hero-tagline {
-        font-size: 0.9rem;
-        color: var(--accent-soft);
+
+      @keyframes shine {
+        0%, 80% { left: -100%; }
+        100% { left: 200%; }
+      }
+
+      .hero-card-label {
         text-transform: uppercase;
-        letter-spacing: 0.16em;
-        margin-bottom: 0.8rem;
+        letter-spacing: 0.1em;
+        font-size: 0.75rem;
+        color: var(--accent-gold);
+        margin-bottom: 0.5rem;
+        font-weight: 700;
       }
-      .hero-right-title {
-        font-size: 1.1rem;
-        font-weight: 500;
-        margin-bottom: 0.3rem;
-      }
-      .hero-right-sub {
-        font-size: 0.85rem;
-        color: var(--text-muted);
-        margin-bottom: 1rem;
-      }
+
       .hero-metrics {
         display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 0.9rem;
-        margin-bottom: 1.2rem;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        margin: 1.5rem 0;
       }
-      .hero-metric {
-        padding: 0.7rem 0.75rem;
-        border-radius: 14px;
-        border: 1px solid rgba(148, 163, 184, 0.4);
-        background: rgba(15, 23, 42, 0.85);
-        font-size: 0.78rem;
+
+      .metric-box {
+        background: rgba(255, 255, 255, 0.03);
+        padding: 1rem;
+        border-radius: 16px;
+        text-align: center;
+        border: 1px solid rgba(255, 255, 255, 0.05);
       }
-      .hero-metric-label {
+
+      .metric-val {
+        display: block;
+        font-size: 1rem;
+        font-weight: 700;
+        color: #fff;
+      }
+
+      .metric-lbl {
+        font-size: 0.7rem;
         color: var(--text-muted);
-        margin-bottom: 0.2rem;
+        margin-top: 0.2rem;
       }
-      .hero-metric-value {
-        font-size: 0.95rem;
-        font-weight: 600;
-      }
-      .hero-strip {
-        border-radius: 18px;
-        border: 1px dashed rgba(148, 163, 184, 0.6);
-        padding: 0.75rem 0.9rem;
+
+      .hero-app-teaser {
+        background: rgba(251, 191, 36, 0.1);
+        border: 1px dashed rgba(251, 191, 36, 0.3);
+        padding: 0.8rem;
+        border-radius: 12px;
+        font-size: 0.85rem;
+        color: var(--text-soft);
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        gap: 0.75rem;
-        font-size: 0.78rem;
-        background: rgba(15, 23, 42, 0.9);
-        margin-top: 0.3rem;
-        position: relative;
-        z-index: 2;
+        gap: 0.8rem;
       }
-      .hero-strip strong {
-        color: var(--accent-gold);
-      }
-      .hero-strip-ar {
-        font-size: 0.75rem;
-        color: var(--text-soft);
-        direction: rtl;
-      }
-      @media (max-width: 520px) {
-        .hero-metrics {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-        .hero-strip {
-          flex-direction: column;
-          align-items: flex-start;
-        }
-      }
-      /* Cards / lists */
-      .grid {
+
+      /* --- Cards Grid (Why / Solutions) --- */
+      .grid-3 {
         display: grid;
-        gap: 1.5rem;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
       }
-      @media (min-width: 780px) {
-        .grid-2 {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-        .grid-3 {
-          grid-template-columns: repeat(3, minmax(0, 1fr));
-        }
+      
+      .grid-2 {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+        gap: 2rem;
       }
+
       .card {
-        background: var(--bg-card);
+        background: var(--glass-bg);
+        border: 1px solid var(--glass-border);
         border-radius: var(--radius-lg);
-        border: 1px solid var(--border-subtle);
-        padding: 1.3rem 1.4rem;
-        box-shadow: 0 14px 45px rgba(15, 23, 42, 0.75);
+        padding: 2rem;
+        transition: var(--transition-smooth);
         position: relative;
         overflow: hidden;
       }
-      .card::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: radial-gradient(
-          circle at top right,
-          rgba(234, 179, 8, 0.08),
-          transparent 60%
-        );
-        opacity: 0;
-        transition: opacity var(--transition-fast);
-        pointer-events: none;
+
+      .card:hover {
+        transform: translateY(-5px);
+        border-color: rgba(251, 191, 36, 0.3); /* Gold border on hover */
+        box-shadow: 0 20px 40px -5px rgba(0,0,0,0.4);
       }
-      .card:hover::before {
-        opacity: 1;
-      }
-      .card-kicker {
-        font-size: 0.78rem;
-        text-transform: uppercase;
-        letter-spacing: 0.12em;
-        color: var(--accent-soft);
-        margin-bottom: 0.45rem;
-      }
-      .card-title {
-        font-size: 1rem;
-        font-weight: 500;
-        margin-bottom: 0.3rem;
-      }
-      .card-title-ar {
-        font-size: 0.88rem;
-        color: var(--accent-soft);
-        direction: rtl;
-        margin-bottom: 0.2rem;
-      }
-      .card-body {
-        font-size: 0.95rem;
-        color: var(--text-muted);
-        margin-bottom: 1rem;
-      }
-      .card-list {
-        list-style: none;
-        padding-left: 0;
-        margin: 0;
-        font-size: 0.9rem;
-        color: var(--text-soft);
-      }
-      .card-list li {
-        display: flex;
-        align-items: flex-start;
-        gap: 0.4rem;
-        margin-top: 0.4rem;
-      }
-      .card-dot {
-        width: 6px;
-        height: 6px;
-        border-radius: 999px;
-        margin-top: 0.3rem;
-        background: linear-gradient(
-          to bottom right,
-          var(--accent-gold),
-          var(--accent-green)
-        );
-        flex-shrink: 0;
-      }
-      .pill {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.35rem;
-        padding: 0.25rem 0.6rem;
-        border-radius: 999px;
-        font-size: 0.74rem;
-        border: 1px solid rgba(148, 163, 184, 0.5);
-        color: var(--text-soft);
-        background: rgba(15, 23, 42, 0.85);
-      }
-      /* About */
-      #about .about-layout {
-        display: grid;
-        gap: 1.6rem;
-      }
-      @media (min-width: 840px) {
-        #about .about-layout {
-          grid-template-columns: 1.5fr 1.2fr;
-        }
-      }
-      .about-text p {
-        font-size: 1rem;
-        color: var(--text-muted);
-        margin-bottom: 0.9rem;
-      }
-      .about-badges {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.55rem;
-        margin-top: 0.6rem;
-      }
-      .about-highlight {
-        border-radius: var(--radius-xl);
-        padding: 1rem 1.1rem;
-        border: 1px dashed rgba(148, 163, 184, 0.7);
-        background: rgba(15, 23, 42, 0.9);
-        font-size: 0.86rem;
-        display: flex;
-        flex-direction: column;
-        gap: 0.35rem;
-      }
-      .about-highlight strong {
-        color: var(--accent-gold);
-      }
-      /* Why KushVolt */
-      #why {
-        position: relative;
-      }
-      #why .grid-3 {
-        margin-top: 0.8rem;
-      }
-      .badge-quote {
-        font-size: 0.8rem;
-        color: var(--accent-soft);
-        margin-top: 0.3rem;
-      }
-      /* Solutions */
-      #solutions .solutions-grid {
-        margin-top: 0.2rem;
-      }
-      .tag-row {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.4rem;
-        margin-top: 0.5rem;
-        font-size: 0.78rem;
-      }
-      .tag {
-        padding: 0.18rem 0.55rem;
-        border-radius: 999px;
-        border: 1px solid rgba(148, 163, 184, 0.55);
-        background: rgba(15, 23, 42, 0.88);
-        color: var(--text-soft);
-      }
-      /* How it Works */
-      #how .steps {
-        counter-reset: step;
-      }
-      .step {
-        position: relative;
-        padding-left: 2.4rem;
-        margin-bottom: 1.5rem;
-      }
-      .step::before {
-        counter-increment: step;
-        content: counter(step);
-        position: absolute;
-        left: 0;
-        top: 0.1rem;
-        width: 1.6rem;
-        height: 1.6rem;
-        border-radius: 999px;
-        background: radial-gradient(circle at 30% 0, #facc15 0, #f97316 55%);
-        color: #111827;
-        font-size: 0.9rem;
-        font-weight: 600;
+
+      .card-icon {
+        width: 48px;
+        height: 48px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
         display: flex;
         align-items: center;
         justify-content: center;
-        box-shadow: 0 0 18px rgba(250, 204, 21, 0.7);
-      }
-      .step-title {
-        font-size: 0.95rem;
-        font-weight: 500;
-      }
-      .step-title-ar {
-        font-size: 0.85rem;
-        color: var(--accent-soft);
-        direction: rtl;
-      }
-      .step-body {
-        font-size: 0.9rem;
-        color: var(--text-muted);
-        margin-top: 0.25rem;
-      }
-      /* Education */
-      #education .card-list li span {
-        display: block;
-      }
-      /* App */
-      #app .app-layout {
-        display: grid;
-        gap: 1.5rem;
-      }
-      @media (min-width: 840px) {
-        #app .app-layout {
-          grid-template-columns: 1.35fr 1.1fr;
-        }
-      }
-      .app-mock {
-        border-radius: var(--radius-xl);
-        border: 1px solid rgba(148, 163, 184, 0.45);
-        background: radial-gradient(
-            circle at top,
-            rgba(56, 189, 248, 0.12),
-            transparent 55%
-          ),
-          #020617;
-        padding: 1.1rem 1rem;
-        box-shadow: var(--shadow-soft);
-        position: relative;
-        overflow: hidden;
-      }
-      .app-mock-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 0.8rem;
-        font-size: 0.8rem;
-      }
-      .app-pill {
-        border-radius: 999px;
-        padding: 0.18rem 0.6rem;
-        border: 1px solid rgba(148, 163, 184, 0.6);
-        background: rgba(15, 23, 42, 0.9);
-      }
-      .app-screen {
-        margin-top: 0.4rem;
-        border-radius: 18px;
-        border: 1px solid rgba(148, 163, 184, 0.6);
-        background: rgba(15, 23, 42, 0.95);
-        padding: 0.9rem;
-        font-size: 0.8rem;
-      }
-      .app-row {
-        display: flex;
-        justify-content: space-between;
-        gap: 0.75rem;
-        margin-bottom: 0.5rem;
-      }
-      .app-label {
-        color: var(--text-muted);
-      }
-      .app-value {
-        font-weight: 500;
-      }
-      .app-cta-strip {
-        margin-top: 0.8rem;
-        border-radius: 999px;
-        border: 1px dashed rgba(148, 163, 184, 0.7);
-        padding: 0.4rem 0.8rem;
-        font-size: 0.78rem;
-        display: flex;
-        justify-content: space-between;
-        gap: 0.75rem;
-        align-items: center;
-        background: rgba(15, 23, 42, 0.9);
-      }
-      @media (max-width: 520px) {
-        .app-cta-strip {
-          flex-direction: column;
-          align-items: flex-start;
-        }
-      }
-      /* Contact */
-      #contact .contact-grid {
-        display: grid;
-        gap: 1.5rem;
-      }
-      @media (min-width: 780px) {
-        #contact .contact-grid {
-          grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-        }
-      }
-      .contact-list {
-        list-style: none;
-        padding: 0;
-        margin: 0.7rem 0 0;
-        font-size: 0.88rem;
-        color: var(--text-soft);
-      }
-      .contact-list li {
-        display: flex;
-        align-items: flex-start;
-        gap: 0.45rem;
-        margin-top: 0.4rem;
-      }
-      .contact-box {
-        border-radius: var(--radius-xl);
-        border: 1px solid var(--border-subtle);
-        background: rgba(15, 23, 42, 0.95);
-        padding: 1.1rem 1.2rem;
-        font-size: 0.86rem;
-        color: var(--text-muted);
-      }
-      .contact-box strong {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
         color: var(--accent-gold);
       }
-      /* Footer */
-      footer {
-        border-top: 1px solid rgba(148, 163, 184, 0.45);
-        background: #020617;
-        padding: 1.2rem 0 1.6rem;
-        font-size: 0.8rem;
-        color: var(--text-muted);
+
+      .card h3 {
+        font-size: 1.25rem;
+        margin-bottom: 0.5rem;
       }
-      .footer-row {
+
+      .card p {
+        color: var(--text-muted);
+        font-size: 0.95rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .card-list li {
+        display: flex;
+        gap: 0.8rem;
+        margin-bottom: 0.8rem;
+        font-size: 0.9rem;
+        color: var(--text-soft);
+      }
+
+      .check-icon {
+        color: var(--accent-green);
+        flex-shrink: 0;
+      }
+
+      /* --- About Section --- */
+      .about-layout {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr;
+        gap: 4rem;
+        align-items: start;
+      }
+
+      .highlight-box {
+        background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+        border: 1px solid rgba(251, 191, 36, 0.2);
+        padding: 2rem;
+        border-radius: var(--radius-lg);
+      }
+      
+      .highlight-text {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--accent-gold);
+        margin-bottom: 0.5rem;
+      }
+
+      /* --- How it works (Steps) --- */
+      .step {
+        position: relative;
+        padding-left: 3.5rem;
+        margin-bottom: 2.5rem;
+      }
+
+      .step::before {
+        content: '';
+        position: absolute;
+        left: 19px;
+        top: 40px;
+        bottom: -20px;
+        width: 2px;
+        background: rgba(255,255,255,0.1);
+      }
+      
+      .step:last-child::before { display: none; }
+
+      .step-num {
+        position: absolute;
+        left: 0; top: 0;
+        width: 40px; height: 40px;
+        background: rgba(30, 41, 59, 1);
+        border: 1px solid var(--accent-gold);
+        color: var(--accent-gold);
+        border-radius: 50%;
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        gap: 0.9rem;
-        flex-wrap: wrap;
+        justify-content: center;
+        font-weight: 700;
+        z-index: 2;
+        box-shadow: 0 0 15px rgba(251, 191, 36, 0.2);
       }
-      .footer-row a {
-        color: var(--accent-soft);
-        font-size: 0.78rem;
+
+      /* --- App Preview --- */
+      .app-preview-container {
+        background: radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.1) 0%, transparent 60%);
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: var(--radius-xl);
+        padding: 3rem;
+        text-align: center;
       }
-      /* Simple fade animation */
-      .fade-in {
-        opacity: 0;
-        transform: translateY(10px);
-        animation: fadeInUp 0.7s ease-out forwards;
+      
+      .app-mockup {
+        max-width: 320px;
+        margin: 2rem auto 0;
+        background: #000;
+        border-radius: 24px;
+        border: 4px solid #333;
+        padding: 1rem;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.5);
       }
-      .fade-delay-1 {
-        animation-delay: 0.1s;
+
+      /* --- Contact --- */
+      .contact-card {
+        background: linear-gradient(135deg, rgba(16, 185, 129, 0.05), rgba(15, 23, 42, 0.8));
+        border: 1px solid rgba(16, 185, 129, 0.2);
+        border-radius: var(--radius-lg);
+        padding: 2rem;
       }
-      .fade-delay-2 {
-        animation-delay: 0.2s;
+
+      .form-input {
+        width: 100%;
+        background: rgba(0,0,0,0.3);
+        border: 1px solid rgba(255,255,255,0.1);
+        padding: 1rem;
+        border-radius: 12px;
+        color: #fff;
+        margin-bottom: 1rem;
+        font-family: inherit;
       }
-      .fade-delay-3 {
-        animation-delay: 0.3s;
+      
+      .form-input:focus {
+        outline: none;
+        border-color: var(--accent-gold);
+        background: rgba(0,0,0,0.5);
       }
-      .fade-delay-4 {
-        animation-delay-0.4s;
+
+      /* --- Footer --- */
+      footer {
+        border-top: 1px solid rgba(255,255,255,0.05);
+        padding: 3rem 0;
+        margin-top: auto;
+        font-size: 0.9rem;
+        color: var(--text-muted);
       }
-      @keyframes fadeInUp {
-        to {
-          opacity: 1;
-          transform: translateY(0);
+
+      /* --- Floating Action Button (FAB) --- */
+      .fab-whatsapp {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        width: 60px;
+        height: 60px;
+        background: #25D366;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        color: #fff;
+        box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+        z-index: 100;
+        transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        animation: pulse-green 3s infinite;
+      }
+      
+      .fab-whatsapp:hover {
+        transform: scale(1.1);
+      }
+
+      @keyframes pulse-green {
+        0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+        70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+      }
+
+      /* --- Responsive --- */
+      @media (max-width: 900px) {
+        .hero-inner, .about-layout {
+          grid-template-columns: 1fr;
+          gap: 3rem;
         }
+        .hero-heading { font-size: 2.5rem; }
+        .nav-links { display: none; } /* Use JS toggle */
+        .nav-toggle { display: block; }
       }
-      /* Extra small screens */
-      @media (max-width: 480px) {
-        section {
-          padding: 3.5rem 0;
-        }
-        .hero-heading {
-          font-size: 1.9rem;
-        }
-        .section-title {
-          font-size: 1.5rem;
-        }
-        .btn {
-          padding: 0.7rem 1.1rem;
-          font-size: 0.9rem;
-        }
-        .container {
-          padding: 0 1rem;
-        }
+      
+      @media (max-width: 600px) {
+        .grid-2 { grid-template-columns: 1fr; }
+        .section { padding: 4rem 0; }
+        .btn { width: 100%; }
       }
     </style>
   </head>
   <body>
+
     <div class="page-shell">
-      <!-- Header -->
       <header>
         <div class="container">
-          <div class="nav" id="top-nav">
-            <a href="#hero" class="brand">
+          <div class="nav">
+            <a href="#" class="brand">
               <div class="brand-logo">KV</div>
-              <div class="brand-text">
+              <div>
                 <div class="brand-name">KushVolt</div>
-                <div class="brand-tagline">
-                  Power that lasts, trust that grows.
-                </div>
+                <span class="brand-tagline">Power that lasts.</span>
               </div>
             </a>
-            <button
-              class="nav-toggle"
-              aria-label="Toggle navigation"
-              onclick="toggleNav()"
-            >
-              ☰
-            </button>
+            
             <nav class="nav-links">
               <a href="#about">About</a>
-              <a href="#why">Why KushVolt</a>
               <a href="#solutions">Solutions</a>
-              <a href="#how">How it works</a>
               <a href="#education">Education</a>
-              <a href="#app">App</a>
               <a href="#contact">Contact</a>
             </nav>
+
             <div class="nav-cta">
-              <span>Dubai → Africa &amp; Middle East</span>
-              <!-- TODO: real WhatsApp link -->
-              <a href="https://wa.me/000000000000" class="btn-outline">
-                <span class="btn-icon">⚡</span> WhatsApp KushVolt
-              </a>
+              <span class="region-badge desktop-only">Dubai → Africa & MENA</span>
+              <button class="nav-toggle" onclick="toggleMenu()">☰</button>
             </div>
           </div>
         </div>
       </header>
 
       <main>
-        <!-- Hero -->
         <section id="hero">
           <div class="container">
             <div class="hero-inner">
-              <div class="hero-left fade-in">
+              <div class="hero-content">
                 <div class="hero-eyebrow">
-                  <span class="hero-eyebrow-pill">Solar export partner</span>
-                  <span class="hero-eyebrow-text">
-                    Dubai-registered → Africa &amp; Middle East
-                  </span>
+                  <div class="hero-status-dot"></div>
+                  <span>Dubai Registered Exporter</span>
                 </div>
                 <h1 class="hero-heading">
-                  Reliable solar power,<br />
-                  <span>delivered where it matters.</span>
+                  Reliable Solar Power,<br />
+                  <span>Delivered Where It Matters.</span>
                 </h1>
-                <p class="hero-heading-ar">
-                  طاقة شمسية موثوقة، حيث تكون الحاجة أكبر.
-                </p>
+                <p class="hero-heading-ar">طاقة شمسية موثوقة، حيث تكون الحاجة أكبر.</p>
                 <p class="hero-subtitle">
-                  KushVolt exports certified solar panels, batteries, inverters,
-                  and complete kits from Dubai to Africa and the Middle East —
-                  built for weak-grid and off-grid realities.
+                  Certified panels, lithium batteries, and complete off-grid kits. 
+                  We engineer specifically for weak-grid realities in Africa and the Middle East.
                 </p>
-                <div class="hero-badges">
-                  <span class="hero-badge">
-                    Honest system sizing (no overselling)
-                  </span>
-                  <span class="hero-badge">Long-term technical support</span>
-                  <span class="hero-badge">
-                    Home, business &amp; community projects
-                  </span>
-                </div>
+                
                 <div class="hero-cta-row">
-                  <a href="#solutions" class="btn btn-primary">
-                    View solar solutions <span>→</span>
-                  </a>
-                  <a href="#education" class="btn btn-ghost">
-                    Learn about solar / تعرّف على الطاقة الشمسية
-                  </a>
+                  <a href="#solutions" class="btn btn-primary">View Solar Kits</a>
+                  <a href="#contact" class="btn btn-ghost">Get a Quote</a>
                 </div>
-                <p class="hero-cta-note">
-                  Prefer WhatsApp? Jump straight to
-                  <a href="#contact" style="color: var(--accent-soft)"
-                    >Contact</a
-                  >.
-                </p>
-                <div class="hero-meta">
-                  <div class="hero-meta-item">
-                    <span class="hero-meta-label">Regions</span>
-                    <span>Africa &amp; Middle East focus</span>
+
+                <div class="hero-metrics">
+                  <div class="metric-box">
+                    <span class="metric-val">Dubai</span>
+                    <span class="metric-lbl">HQ & Logistics</span>
                   </div>
-                  <div class="hero-meta-item">
-                    <span class="hero-meta-label">Projects</span>
-                    <span>Small homes → container loads</span>
+                  <div class="metric-box">
+                    <span class="metric-val">100%</span>
+                    <span class="metric-lbl">Tested & Certified</span>
                   </div>
-                  <div class="hero-meta-item">
-                    <span class="hero-meta-label">Support</span>
-                    <span>Pre-sizing + after-sales tech help</span>
+                  <div class="metric-box">
+                    <span class="metric-val">Support</span>
+                    <span class="metric-lbl">Lifetime Tech Help</span>
                   </div>
                 </div>
               </div>
 
-              <aside
-                class="hero-right-card fade-in fade-delay-2"
-                aria-label="Solar system example"
-              >
-                <div class="hero-tagline">Example kit preview</div>
-                <h2 class="hero-right-title">
-                  Off-grid home &amp; small business kits
-                </h2>
-                <p class="hero-right-sub">
-                  Built for hot climates, weak grids, and real-world load
-                  profiles — not theoretical lab conditions.
+              <div class="hero-right-card">
+                <div class="hero-card-label">Popular Configuration</div>
+                <h3 style="margin-bottom:0.5rem;">Small Business Starter</h3>
+                <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:1.5rem;">
+                  Ideal for shops, clinics, and small farms. Replaces 5kVA generators.
                 </p>
-                <div class="hero-metrics">
-                  <div class="hero-metric">
-                    <div class="hero-metric-label">Home starter</div>
-                    <div class="hero-metric-value">1.5 kW + 3 kWh</div>
-                    <div style="font-size: 0.76rem; color: var(--text-muted)">
-                      Lights, TV, phone charging, fridge.
-                    </div>
+                
+                <div style="margin-bottom: 1rem;">
+                  <div style="display:flex; justify-content:space-between; margin-bottom:0.5rem; font-size:0.9rem;">
+                    <span style="color:var(--text-soft);">PV Power</span>
+                    <span style="font-weight:600; color:#fff;">3.5 kWp</span>
                   </div>
-                  <div class="hero-metric">
-                    <div class="hero-metric-label">Business</div>
-                    <div class="hero-metric-value">3–5 kW + 10 kWh</div>
-                    <div style="font-size: 0.76rem; color: var(--text-muted)">
-                      Shops, cafés, small farms, offices.
-                    </div>
-                  </div>
-                  <div class="hero-metric">
-                    <div class="hero-metric-label">Cold-chain</div>
-                    <div class="hero-metric-value">Custom</div>
-                    <div style="font-size: 0.76rem; color: var(--text-muted)">
-                      Fridge &amp; freezer + monitoring.
-                    </div>
+                  <div style="width:100%; height:6px; background:rgba(255,255,255,0.1); border-radius:10px;">
+                    <div style="width:70%; height:100%; background:var(--accent-gold); border-radius:10px;"></div>
                   </div>
                 </div>
-                <div class="hero-strip">
+
+                <div style="margin-bottom: 1.5rem;">
+                  <div style="display:flex; justify-content:space-between; margin-bottom:0.5rem; font-size:0.9rem;">
+                    <span style="color:var(--text-soft);">Storage (Li-Ion)</span>
+                    <span style="font-weight:600; color:#fff;">5.0 kWh</span>
+                  </div>
+                  <div style="width:100%; height:6px; background:rgba(255,255,255,0.1); border-radius:10px;">
+                    <div style="width:50%; height:100%; background:var(--accent-green); border-radius:10px;"></div>
+                  </div>
+                </div>
+
+                <div class="hero-app-teaser">
+                  <span>📱</span>
                   <div>
-                    <strong>Future app:</strong> speak or select appliances →
-                    get a suggested system with estimated generator savings.
-                  </div>
-                  <div class="hero-strip-ar">
-                    قريباً: تطبيق لتقدير النظام بالعربية والإنجليزية.
+                    <strong>Coming Soon:</strong> AI Sizing App.<br/>
+                    <span style="font-size:0.75rem; opacity:0.8;">Calculate your savings instantly.</span>
                   </div>
                 </div>
-              </aside>
+              </div>
             </div>
           </div>
         </section>
 
-        <!-- About -->
         <section id="about">
           <div class="container">
-            <div class="section-header fade-in">
-              <div class="section-kicker">About KushVolt</div>
-              <h2 class="section-title">
-                Dubai-registered exporter for real-world conditions.
-              </h2>
-              <p class="section-title-ar">
-                شركة مسجّلة في دبي، تزوّد حلولاً شمسية لواقع إفريقيا والشرق الأوسط.
-              </p>
-              <p class="section-subtitle">
-                KushVolt bridges trusted manufacturers and local realities. From
-                a single home system to container projects, we coordinate
-                sourcing, export, and technical follow-up.
-              </p>
-            </div>
-
             <div class="about-layout">
-              <div class="about-text fade-in fade-delay-1">
-                <p>
-                  Operating out of Dubai, KushVolt focuses on export of
-                  high-quality solar panels, lithium batteries, inverters,
-                  cables, and accessories into African and Middle Eastern
-                  markets.
-                </p>
-                <p>
-                  Systems are selected and sized specifically for weak-grid,
-                  off-grid, and hot-climate environments — where reliability
-                  matters more than marketing numbers.
-                </p>
-                <p>
-                  We work with homeowners, small businesses, rural communities,
-                  and distributors who want long-term performance, not one-time
-                  shipments.
-                </p>
-                <div class="about-badges">
-                  <span class="pill">Dubai company, African focus</span>
-                  <span class="pill">Off-grid &amp; weak-grid specialists</span>
-                  <span class="pill">From cartons to containers</span>
-                </div>
-              </div>
-
-              <div class="about-highlight fade-in fade-delay-2">
-                <div><strong>Power that lasts, trust that grows.</strong></div>
-                <div>
-                  From first sizing call to after-sales support, KushVolt stays
-                  involved so projects actually deliver the kWh promised on
-                  paper.
-                </div>
-                <div
-                  style="
-                    font-size: 0.82rem;
-                    direction: rtl;
-                    color: var(--accent-soft);
-                  "
-                >
-                  نختار المعدات بعناية، ونساعد في التصميم والمتابعة الفنية بعد
-                  التركيب، لبناء شراكات طويلة الأمد.
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Why KushVolt -->
-        <section id="why">
-          <div class="container">
-            <div class="section-header fade-in">
-              <div class="section-kicker">Why KushVolt</div>
-              <h2 class="section-title">
-                Certified products, honest sizing, long-term support.
-              </h2>
-              <p class="section-title-ar">
-                منتجات معتمدة، حسابات واقعية، ودعم مستمر بعد البيع.
-              </p>
-              <p class="section-subtitle">
-                Many solar systems fail because they were sold, not engineered.
-                KushVolt’s role is to align real load profiles, realistic
-                runtimes, and the right components — then stay available when
-                questions show up.
-              </p>
-              <div class="badge-quote">
-                “Power that lasts, trust that grows.” – more than a slogan, it’s
-                how we measure every shipment.
-              </div>
-            </div>
-
-            <div class="grid grid-3">
-              <article class="card fade-in fade-delay-1">
-                <div class="card-kicker">Certified components</div>
-                <h3 class="card-title">
-                  Panels, batteries &amp; inverters that last.
-                </h3>
-                <div class="card-title-ar">
-                  ألواح وبطاريات ومحولات موثوقة لعمر أطول.
-                </div>
-                <p class="card-body">
-                  We work with proven manufacturers and match products to
-                  climate and usage — including high-temperature and dusty
-                  environments.
-                </p>
-                <ul class="card-list">
-                  <li>
-                    <span class="card-dot"></span>
-                    <span>Tiered product options by budget and lifetime.</span>
-                  </li>
-                  <li>
-                    <span class="card-dot"></span>
-                    <span>
-                      Datasheets and documentation provided with shipments.
-                    </span>
-                  </li>
-                </ul>
-              </article>
-
-              <article class="card fade-in fade-delay-2">
-                <div class="card-kicker">Professional coordination</div>
-                <h3 class="card-title">From design to export paperwork.</h3>
-                <div class="card-title-ar">
-                  من اختيار النظام إلى إجراءات الشحن.
-                </div>
-                <p class="card-body">
-                  KushVolt supports system sizing, bill of materials, and export
-                  logistics, so local partners can focus on installation and
-                  customers.
-                </p>
-                <ul class="card-list">
-                  <li>
-                    <span class="card-dot"></span>
-                    <span>
-                      Pre-sizing support based on appliances and runtimes.
-                    </span>
-                  </li>
-                  <li>
-                    <span class="card-dot"></span>
-                    <span>Shipping coordination and required documentation.</span>
-                  </li>
-                </ul>
-              </article>
-
-              <article class="card fade-in fade-delay-3">
-                <div class="card-kicker">Continuous support</div>
-                <h3 class="card-title">We don’t disappear after delivery.</h3>
-                <div class="card-title-ar">نبقى معكم بعد وصول الشحنة.</div>
-                <p class="card-body">
-                  Questions during installation or system usage are normal.
-                  KushVolt offers ongoing technical support for our partners and
-                  their clients.
-                </p>
-                <ul class="card-list">
-                  <li>
-                    <span class="card-dot"></span>
-                    <span>WhatsApp and email support for installers.</span>
-                  </li>
-                  <li>
-                    <span class="card-dot"></span>
-                    <span>
-                      Guides to help customers understand and protect their
-                      system.
-                    </span>
-                  </li>
-                </ul>
-              </article>
-            </div>
-          </div>
-        </section>
-
-        <!-- Solutions -->
-        <section id="solutions">
-          <div class="container">
-            <div class="section-header fade-in">
-              <div class="section-kicker">Solutions</div>
-              <h2 class="section-title">
-                From components to complete solar kits.
-              </h2>
-            </div>
-            <p class="section-title-ar" style="margin-top:-2rem">
-              من المكوّنات المنفصلة إلى الأنظمة الجاهزة.
-            </p>
-            <p class="section-subtitle">
-              Whether you’re topping up existing systems or launching a new
-              project, KushVolt supplies the right mix of hardware and design
-              support.
-            </p>
-
-            <div class="grid grid-2 solutions-grid">
-              <article class="card fade-in fade-delay-1">
-                <div class="card-kicker">Components</div>
-                <h3 class="card-title">
-                  Panels, batteries, inverters &amp; more.
-                </h3>
-                <div class="card-title-ar">
-                  ألواح، بطاريات، محوّلات، كابلات وإكسسوارات.
-                </div>
-                <p class="card-body">
-                  Source trusted components directly from Dubai, with options
-                  for different performance levels and budgets.
-                </p>
-                <ul class="card-list">
-                  <li>
-                    <span class="card-dot"></span>
-                    <span>
-                      Mono &amp; poly solar panels sized for rooftops and
-                      ground-mount.
-                    </span>
-                  </li>
-                  <li>
-                    <span class="card-dot"></span>
-                    <span>
-                      Lithium batteries and advanced charge controllers.
-                    </span>
-                  </li>
-                  <li>
-                    <span class="card-dot"></span>
-                    <span>
-                      Hybrid inverters, cabling, breakers, protections &amp;
-                      accessories.
-                    </span>
-                  </li>
-                </ul>
-                <div class="tag-row">
-                  <span class="tag">Panels</span>
-                  <span class="tag">Lithium batteries</span>
-                  <span class="tag">Hybrid inverters</span>
-                  <span class="tag">Cables &amp; protections</span>
-                </div>
-              </article>
-
-              <article class="card fade-in fade-delay-2">
-                <div class="card-kicker">Pre-configured kits</div>
-                <h3 class="card-title">Ready-to-deploy solar systems.</h3>
-                <div class="card-title-ar">أنظمة شمسية جاهزة للاستخدام.</div>
-                <p class="card-body">
-                  Get proven configurations for homes, businesses, cold-chain
-                  and irrigation — with room for local customization.
-                </p>
-                <ul class="card-list">
-                  <li>
-                    <span class="card-dot"></span>
-                    <span>
-                      Home kits: lights, TV, fans, phone charging, fridge.
-                    </span>
-                  </li>
-                  <li>
-                    <span class="card-dot"></span>
-                    <span>
-                      Business kits: shops, cafés, offices, clinics, small
-                      farms.
-                    </span>
-                  </li>
-                  <li>
-                    <span class="card-dot"></span>
-                    <span>
-                      Fridge/cold-chain &amp; irrigation packages with efficient
-                      pumps.
-                    </span>
-                  </li>
-                </ul>
-                <div class="tag-row">
-                  <span class="tag">Home kit</span>
-                  <span class="tag">Business kit</span>
-                  <span class="tag">Fridge / cold-chain</span>
-                  <span class="tag">Irrigation</span>
-                </div>
-              </article>
-            </div>
-
-            <div
-              class="about-highlight fade-in fade-delay-3"
-              style="margin-top: 1.75rem"
-            >
               <div>
-                <strong>Any quantity:</strong> from a few kits to full container
-                shipments for distributors and projects.
+                <div class="section-kicker">About KushVolt</div>
+                <h2 class="section-title">Engineered for Real Conditions.</h2>
+                <p class="section-title-ar">حلول مصممة لواقع الشبكات الصعبة.</p>
+                <p class="section-subtitle">
+                  Most solar failures happen because systems are sold, not engineered. 
+                  KushVolt bridges the gap between top-tier manufacturers and the realities 
+                  of heat, dust, and unstable grids.
+                </p>
+                <div style="margin-top: 2rem; display:flex; gap:1rem; flex-wrap:wrap;">
+                  <span class="region-badge">No Overselling</span>
+                  <span class="region-badge">Thermal Management</span>
+                  <span class="region-badge">Remote Monitoring</span>
+                </div>
               </div>
-              <div
-                style="
-                  font-size: 0.84rem;
-                  direction: rtl;
-                  color: var(--accent-soft);
-                "
-              >
-                يمكننا تلبية الطلبات الصغيرة والكبيرة، من أنظمة فردية إلى حاويات
-                كاملة للوكلاء والمشاريع.
+              <div class="highlight-box">
+                <div class="highlight-text">"Power that lasts, trust that grows."</div>
+                <p style="font-size:0.95rem; color:var(--text-muted); margin-bottom:1rem;">
+                  We don't just ship boxes. We coordinate sizing, logistics, and installation 
+                  support to ensure your project actually delivers the kWh promised on paper.
+                </p>
+                <p class="section-title-ar" style="font-size:0.9rem; color:var(--text-soft);">
+                  نحن معكم من التصميم وحتى التشغيل، لضمان أداء يدوم طويلاً.
+                </p>
               </div>
             </div>
           </div>
         </section>
 
-        <!-- How it works -->
+        <section id="solutions" style="background: rgba(0,0,0,0.2);">
+          <div class="container">
+            <div class="section-header">
+              <div class="section-kicker">Solutions</div>
+              <h2 class="section-title">From Components to Containers.</h2>
+            </div>
+
+            <div class="grid-2">
+              <div class="card">
+                <div class="card-icon">📦</div>
+                <h3>Complete Solar Kits</h3>
+                <div class="section-title-ar" style="margin-top:-0.5rem; margin-bottom:1rem;">أنظمة متكاملة</div>
+                <p>Pre-engineered packages for homes, offices, and cold-chain logistics. Includes cabling, breakers, and mounting.</p>
+                <ul class="card-list">
+                  <li><span class="check-icon">✓</span> Home Essentials (1-3 kW)</li>
+                  <li><span class="check-icon">✓</span> Business Pro (5-15 kW)</li>
+                  <li><span class="check-icon">✓</span> Agricultural Pumps</li>
+                </ul>
+                <a href="#contact" class="btn-outline" style="display:inline-block; margin-top:1rem;">Request Catalog</a>
+              </div>
+
+              <div class="card">
+                <div class="card-icon">🔋</div>
+                <h3>Export Components</h3>
+                <div class="section-title-ar" style="margin-top:-0.5rem; margin-bottom:1rem;">تصدير المكونات</div>
+                <p>Wholesale supply for installers and distributors. Sourced directly from Tier-1 manufacturers.</p>
+                <ul class="card-list">
+                  <li><span class="check-icon">✓</span> Lithium (LiFePO4) Batteries</li>
+                  <li><span class="check-icon">✓</span> Hybrid Inverters</li>
+                  <li><span class="check-icon">✓</span> Mono-PERC Panels</li>
+                </ul>
+                <a href="#contact" class="btn-outline" style="display:inline-block; margin-top:1rem;">Distributor Pricing</a>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section id="how">
           <div class="container">
-            <div class="section-header fade-in">
-              <div class="section-kicker">How it works</div>
-              <h2 class="section-title">
-                From awareness to export &amp; support.
-              </h2>
-              <p class="section-title-ar">
-                من فهم الأحمال إلى الشحن والدعم الفني.
-              </p>
-              <p class="section-subtitle">
-                We keep the process simple, especially for new users: understand
-                your appliances, propose realistic options, and support you
-                during and after delivery.
-              </p>
+            <div class="section-header">
+              <div class="section-kicker">Process</div>
+              <h2 class="section-title">Simple Steps. Reliable Power.</h2>
             </div>
 
-            <div class="grid grid-2">
-              <div class="card fade-in fade-delay-1">
-                <div class="card-kicker">Step-by-step</div>
-                <div class="steps">
-                  <div class="step">
-                    <div class="step-title">Step 1 – Awareness &amp; sizing</div>
-                    <div class="step-title-ar">
-                      الخطوة ١ – فهم الأحمال وحجم النظام.
-                    </div>
-                    <p class="step-body">
-                      You share your appliances, hours of use, and backup needs.
-                      We help you translate that into a simple “load profile”.
-                    </p>
-                  </div>
-                  <div class="step">
-                    <div class="step-title">Step 2 – Smart proposal</div>
-                    <div class="step-title-ar">
-                      الخطوة ٢ – عرض نظام مناسب ومقارنة مع المولّد.
-                    </div>
-                    <p class="step-body">
-                      Based on your load profile, KushVolt prepares one or more
-                      system options with expected lifetime, warranty, and
-                      generator fuel savings.
-                    </p>
-                  </div>
-                  <div class="step">
-                    <div class="step-title">Step 3 – Export &amp; support</div>
-                    <div class="step-title-ar">
-                      الخطوة ٣ – التصدير والمتابعة الفنية.
-                    </div>
-                    <p class="step-body">
-                      Once you choose a system, we coordinate export, shipping
-                      documents, and remain available for technical questions
-                      during installation and operation.
-                    </p>
-                  </div>
-                </div>
+            <div class="grid-3">
+              <div class="step">
+                <div class="step-num">1</div>
+                <h3>Assessment</h3>
+                <p style="font-size:0.9rem; color:var(--text-muted);">Send us your appliance list or load profile. We analyze your peak usage.</p>
               </div>
-
-              <div class="card fade-in fade-delay-2">
-                <div class="card-kicker">Future app integration</div>
-                <h3 class="card-title">
-                  This workflow becomes the KushVolt app.
-                </h3>
-                <div class="card-title-ar">
-                  نفس هذه الخطوات ستكون في تطبيق كوش فولت.
-                </div>
-                <p class="card-body">
-                  The same process will soon be available in an easy mobile and
-                  web app: users speak or tap appliances, see suggested systems,
-                  and send designs directly to KushVolt.
-                </p>
-                <ul class="card-list">
-                  <li>
-                    <span class="card-dot"></span>
-                    <span>Voice or tap input – no spreadsheets.</span>
-                  </li>
-                  <li>
-                    <span class="card-dot"></span>
-                    <span>Instant comparison vs. generator fuel costs.</span>
-                  </li>
-                  <li>
-                    <span class="card-dot"></span>
-                    <span>WhatsApp/PDF export for quotes and approvals.</span>
-                  </li>
-                </ul>
+              <div class="step">
+                <div class="step-num">2</div>
+                <h3>Proposal</h3>
+                <p style="font-size:0.9rem; color:var(--text-muted);">We design a system that fits your budget and runtime needs (not too big, not too small).</p>
+              </div>
+              <div class="step">
+                <div class="step-num">3</div>
+                <h3>Export & Support</h3>
+                <p style="font-size:0.9rem; color:var(--text-muted);">We handle logistics from Dubai and stay online for installation support.</p>
               </div>
             </div>
           </div>
         </section>
 
-        <!-- Education -->
-        <section id="education">
-          <div class="container">
-            <div class="section-header fade-in">
-              <div class="section-kicker">Education</div>
-              <h2 class="section-title">
-                Simple guides to make solar less confusing.
-              </h2>
-              <p class="section-title-ar">
-                شروحات بسيطة لتوضيح أساسيات الطاقة الشمسية.
-              </p>
-              <p class="section-subtitle">
-                Clear understanding builds trust. KushVolt publishes short
-                guides and explainer content to help users and partners design
-                and maintain better systems.
-              </p>
-            </div>
-
-            <div class="grid grid-3">
-              <article class="card fade-in fade-delay-1">
-                <div class="card-kicker">Guide</div>
-                <h3 class="card-title">What is kWh?</h3>
-                <div class="card-title-ar">ما هي وحدة kWh؟</div>
-                <p class="card-body">
-                  kWh is how we measure energy used over time. It connects your
-                  appliances, your batteries, and your monthly bills.
-                </p>
-                <ul class="card-list">
-                  <li>
-                    <span class="card-dot"></span>
-                    <span>
-                      Learn to estimate how many kWh your home or business
-                      needs in a day.
-                    </span>
-                  </li>
-                  <li>
-                    <span class="card-dot"></span>
-                    <span>
-                      Understand why “kW vs. kWh” matters for solar design.
-                    </span>
-                  </li>
-                </ul>
-              </article>
-
-              <article class="card fade-in fade-delay-2">
-                <div class="card-kicker">Guide</div>
-                <h3 class="card-title">Why lithium lasts longer than gel.</h3>
-                <div class="card-title-ar">
-                  لماذا تدوم بطاريات الليثيوم أطول من بطاريات الجل؟
-                </div>
-                <p class="card-body">
-                  Lithium batteries tolerate more charge/discharge cycles and
-                  deeper discharges, making them ideal for weak-grid and
-                  off-grid setups.
-                </p>
-                <ul class="card-list">
-                  <li>
-                    <span class="card-dot"></span>
-                    <span>Compare lifetime cost, not just purchase price.</span>
-                  </li>
-                  <li>
-                    <span class="card-dot"></span>
-                    <span>
-                      Learn how to protect batteries for maximum lifetime.
-                    </span>
-                  </li>
-                </ul>
-              </article>
-
-              <article class="card fade-in fade-delay-3">
-                <div class="card-kicker">Guide</div>
-                <h3 class="card-title">How to size your solar system.</h3>
-                <div class="card-title-ar">
-                  كيف تختار حجم النظام الشمسي المناسب؟
-                </div>
-                <p class="card-body">
-                  Basic steps to match your appliances, backup hours, and budget
-                  to a realistic solar system.
-                </p>
-                <ul class="card-list">
-                  <li>
-                    <span class="card-dot"></span>
-                    <span>
-                      List appliances, hours of use, and days of autonomy.
-                    </span>
-                  </li>
-                  <li>
-                    <span class="card-dot"></span>
-                    <span>
-                      See how panels, inverters, and batteries fit together.
-                    </span>
-                  </li>
-                </ul>
-              </article>
-            </div>
-          </div>
-        </section>
-
-        <!-- App -->
-        <section id="app">
-          <div class="container">
-            <div class="section-header fade-in">
-              <div class="section-kicker">App (coming soon)</div>
-              <h2 class="section-title">The KushVolt sizing app.</h2>
-              <p class="section-title-ar">
-                تطبيق كوش فولت لتقدير الأنظمة الشمسية.
-              </p>
-              <p class="section-subtitle">
-                A lightweight, multi-language tool that turns your appliances
-                and usage patterns into suggested solar systems — ready to share
-                as WhatsApp messages or PDFs.
-              </p>
-            </div>
-
-            <div class="app-layout">
-              <div class="fade-in fade-delay-1">
-                <h3 style="font-size: 1rem; margin-bottom: 0.5rem">
-                  For users and partners.
-                </h3>
-                <p
-                  style="
-                    font-size: 0.9rem;
-                    color: var(--text-muted);
-                    margin-bottom: 0.8rem;
-                  "
-                >
-                  The app is designed for both end users and distributors, with
-                  low-data and offline-friendly features that work in rural
-                  areas.
-                </p>
-                <ul class="card-list" style="margin-bottom: 1rem">
-                  <li>
-                    <span class="card-dot"></span>
-                    <span>Voice input or quick tap selection of appliances.</span>
-                  </li>
-                  <li>
-                    <span class="card-dot"></span>
-                    <span>
-                      Estimated system size (e.g. 1.5 kW solar + 3 kWh
-                      battery).
-                    </span>
-                  </li>
-                  <li>
-                    <span class="card-dot"></span>
-                    <span>Fuel savings vs. generator for typical runtimes.</span>
-                  </li>
-                  <li>
-                    <span class="card-dot"></span>
-                    <span>Instant share via WhatsApp or downloadable PDF.</span>
-                  </li>
-                </ul>
-                <div class="about-highlight">
-                  <div>
-                    <strong>Multi-language:</strong> English, Arabic and local
-                    languages as partners grow.
-                  </div>
-                  <div
-                    style="
-                      font-size: 0.84rem;
-                      direction: rtl;
-                      color: var(--accent-soft);
-                    "
-                  >
-                    واجهة بسيطة، تعمل ببيانات قليلة ويمكن استخدامها في المناطق
-                    ذات الاتصال الضعيف.
-                  </div>
-                </div>
-              </div>
-
-              <div
-                class="app-mock fade-in fade-delay-2"
-                aria-label="App mockup teaser"
-              >
-                <div class="app-mock-header">
-                  <span class="app-pill">KushVolt Sizing (Preview)</span>
-                  <span style="font-size: 0.76rem; color: var(--accent-soft)">
-                    Coming soon
-                  </span>
-                </div>
-                <div class="app-screen">
-                  <div class="app-row">
-                    <span class="app-label">Project type</span>
-                    <span class="app-value">Small home + shop</span>
-                  </div>
-                  <div class="app-row">
-                    <span class="app-label">Appliances</span>
-                    <span class="app-value">Lights, TV, fan, fridge</span>
-                  </div>
-                  <div class="app-row">
-                    <span class="app-label">Backup hours</span>
-                    <span class="app-value">6–8 hours / day</span>
-                  </div>
-                  <hr
-                    style="
-                      border: none;
-                      border-top: 1px dashed rgba(148, 163, 184, 0.6);
-                      margin: 0.6rem 0;
-                    "
-                  />
-                  <div class="app-row">
-                    <span class="app-label">Suggested system</span>
-                    <span class="app-value">2.5 kW + 5 kWh Li-ion</span>
-                  </div>
-                  <div class="app-row">
-                    <span class="app-label">Fuel savings</span>
-                    <span class="app-value">≈ 55–70% vs generator</span>
-                  </div>
-                  <div class="app-cta-strip">
-                    <span
-                      >Send this design to KushVolt for a tailored quote.</span
-                    >
-                    <button class="btn btn-secondary" type="button">
-                      Share via WhatsApp
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Contact -->
         <section id="contact">
           <div class="container">
-            <div class="section-header fade-in">
-              <div class="section-kicker">Contact</div>
-              <h2 class="section-title">
-                Ready to talk about your solar project?
-              </h2>
-              <p class="section-title-ar">
-                جاهزون للحديث عن مشروعك الشمسي.
-              </p>
-              <p class="section-subtitle">
-                Share a few details about your country, project type, and
-                appliances — and KushVolt will help you move from idea to a
-                realistic system proposal.
-              </p>
-            </div>
-
-            <div class="contact-grid">
-              <div class="fade-in fade-delay-1">
-                <h3 style="font-size: 1rem; margin-bottom: 0.5rem">
-                  Simple ways to reach us
-                </h3>
-                <ul class="contact-list">
-                  <li>
-                    <span class="card-dot"></span>
-                    <span>
-                      <strong>WhatsApp:</strong>
-                      <!-- TODO: real number -->
-                      <a href="https://wa.me/000000000000">+00 000 000 0000</a>
-                    </span>
-                  </li>
-                  <li>
-                    <span class="card-dot"></span>
-                    <span>
-                      <strong>Email:</strong>
-                      <!-- TODO: real mail -->
-                      <a href="mailto:info@kushvolt.com">info@kushvolt.com</a>
-                    </span>
-                  </li>
-                </ul>
-
-                <p
-                  style="
-                    margin-top: 0.75rem;
-                    font-size: 0.9rem;
-                    color: var(--text-muted);
-                  "
-                >
-                  Prefer voice notes in English or Arabic? Send them — we’ll
-                  translate technical details into clear proposals.
+            <div class="grid-2">
+              <div>
+                <div class="section-kicker">Contact Us</div>
+                <h2 class="section-title">Start Your Project.</h2>
+                <p class="section-subtitle">
+                  Tell us what you want to power. We'll handle the math.
                 </p>
-
-                <div class="about-highlight" style="margin-top: 0.9rem">
-                  <div><strong>Checklist – What to send:</strong></div>
-                  <ul class="contact-list">
-                    <li>
-                      <span class="card-dot"></span>
-                      <span>Country and city / region.</span>
-                    </li>
-                    <li>
-                      <span class="card-dot"></span>
-                      <span>
-                        Type of project (home, shop, farm, clinic, community,
-                        etc.).
-                      </span>
-                    </li>
-                    <li>
-                      <span class="card-dot"></span>
-                      <span>
-                        Key appliances and approximate hours of use per day.
-                      </span>
-                    </li>
-                    <li>
-                      <span class="card-dot"></span>
-                      <span>
-                        Current challenges (fuel costs, outages, noise, etc.).
-                      </span>
-                    </li>
-                  </ul>
+                <div class="contact-card" style="margin-top:2rem;">
+                  <p style="color:#fff; margin-bottom:1rem;"><strong>Quick Connect:</strong></p>
+                  <p style="margin-bottom:0.5rem;">📧 <a href="mailto:info@kushvolt.com">info@kushvolt.com</a></p>
+                  <p>📍 Dubai Silicon Oasis, UAE</p>
                 </div>
               </div>
 
-              <div class="contact-box fade-in fade-delay-2">
-                <p>
-                  <strong>Export &amp; project partnership.</strong> KushVolt
-                  works with local installers, distributors, NGOs, and project
-                  developers. If you manage multiple sites or programs, we can
-                  standardize kits and logistics.
-                </p>
-                <p style="margin-top: 0.65rem">
-                  <span
-                    style="
-                      font-size: 0.83rem;
-                      color: var(--accent-soft);
-                      direction: rtl;
-                    "
-                  >
-                    للتعاون مع شركاء محليين، يمكننا تصميم حزم موحّدة وتنسيق الشحن
-                    والدعم الفني للمشاريع.
-                  </span>
-                </p>
-                <p style="margin-top: 0.9rem; font-size: 0.86rem">
-                  Mention in your message if you are:
-                </p>
-                <ul class="contact-list">
-                  <li>
-                    <span class="card-dot"></span>
-                    <span>
-                      Looking for a one-time system for your own use.
-                    </span>
-                  </li>
-                  <li>
-                    <span class="card-dot"></span>
-                    <span>Acting as an installer, agent, or distributor.</span>
-                  </li>
-                  <li>
-                    <span class="card-dot"></span>
-                    <span>
-                      Managing a program (NGO, community, or government
-                      projects).
-                    </span>
-                  </li>
-                </ul>
-              </div>
+              <form class="contact-card" action="mailto:info@kushvolt.com" method="post" enctype="text/plain">
+                <input type="text" name="name" placeholder="Your Name" class="form-input" required>
+                <input type="email" name="email" placeholder="Your Email" class="form-input" required>
+                <input type="text" name="country" placeholder="Country / City" class="form-input">
+                <select name="type" class="form-input" style="color:var(--text-soft);">
+                  <option value="" disabled selected>Project Type...</option>
+                  <option value="Home">Home System</option>
+                  <option value="Business">Business / Shop</option>
+                  <option value="Distributor">I want to be a Distributor</option>
+                </select>
+                <textarea name="message" rows="4" placeholder="List your appliances (e.g., 1 Fridge, 2 ACs, Lights...)" class="form-input"></textarea>
+                <button type="submit" class="btn btn-primary" style="width:100%;">Send Request</button>
+              </form>
             </div>
           </div>
         </section>
+
       </main>
 
-      <!-- Footer -->
       <footer>
-        <div class="container">
-          <div class="footer-row">
-            <div>© <span id="year"></span> KushVolt. All rights reserved.</div>
-            <div><a href="#hero">Back to top ↑</a></div>
-          </div>
+        <div class="container" style="text-align:center;">
+          <p>© <span id="year"></span> KushVolt Solar Trading. Registered in Dubai, UAE.</p>
         </div>
       </footer>
     </div>
 
+    <a href="https://wa.me/000000000" class="fab-whatsapp" aria-label="Chat on WhatsApp">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.592 2.654-.696c1.029.662 2.028 1.014 3.21 1.014l.003-.001c3.181 0 5.765-2.584 5.765-5.764 0-3.181-2.585-5.769-5.765-5.769zM12 18.9c-1.49 0-2.595-.546-3.344-.994l-.24-.141-2.358.619.628-2.298-.154-.245c-.604-.963-.921-1.896-.921-2.917 0-3.053 2.484-5.538 5.539-5.538 3.054 0 5.538 2.485 5.538 5.539 0 3.054-2.484 5.538-5.539 5.538z"/></svg>
+    </a>
+
     <script>
-      // Mobile nav toggle
-      function toggleNav() {
-        const header = document.querySelector("header");
-        header.classList.toggle("nav-open");
+      // Set Year
+      document.getElementById('year').textContent = new Date().getFullYear();
+      
+      // Mobile Menu Toggle Logic (Simple)
+      function toggleMenu() {
+        const nav = document.querySelector('.nav-links');
+        if(nav.style.display === 'flex') {
+          nav.style.display = 'none';
+        } else {
+          nav.style.display = 'flex';
+          nav.style.flexDirection = 'column';
+          nav.style.position = 'absolute';
+          nav.style.top = '80px';
+          nav.style.left = '0';
+          nav.style.width = '100%';
+          nav.style.background = '#02040a';
+          nav.style.padding = '1rem';
+          nav.style.borderBottom = '1px solid rgba(255,255,255,0.1)';
+        }
       }
-
-      // Close nav on link click (mobile)
-      document.querySelectorAll(".nav-links a").forEach((link) => {
-        link.addEventListener("click", () => {
-          const header = document.querySelector("header");
-          header.classList.remove("nav-open");
-        });
-      });
-
-      // Current year in footer
-      document.getElementById("year").textContent = new Date().getFullYear();
     </script>
   </body>
 </html>
